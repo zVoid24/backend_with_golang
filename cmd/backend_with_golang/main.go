@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/zVoid24/backend_with_golang/internal/config"
+	"github.com/zVoid24/backend_with_golang/internal/http/handlers/student"
 )
 
 func main() {
@@ -18,9 +19,7 @@ func main() {
 
 	router := http.NewServeMux()
 
-	router.HandleFunc("GET /api/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Welcom to my first api with golang"))
-	})
+	router.HandleFunc("POST /api/students", student.New())
 	server := http.Server{
 		Addr:    cfg.Address,
 		Handler: router,
